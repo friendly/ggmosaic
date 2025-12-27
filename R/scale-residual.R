@@ -31,9 +31,9 @@
 #'               expected = ~ Class + Sex) +
 #'   scale_fill_residual(limits = c(-4, 4))
 scale_fill_residual <- function(...,
-                                low = "steelblue",
+                                low = "darkblue",
                                 mid = "white",
-                                high = "firebrick",
+                                high = "darkred",
                                 midpoint = 0,
                                 limits = NULL,
                                 name = "Pearson\nResidual") {

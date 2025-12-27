@@ -9,6 +9,7 @@
 #'   If \code{FALSE}, areas will be comparable between nested layers.
 #' @param na.rm Logical vector of length 1 - should missing levels be
 #'   silently removed?
+#' @param offset Numeric value specifying the space between mosaic tiles (default: 0.01)
 #' @param expected Optional. Specification for loglinear model to calculate
 #'   residuals. Can be:
 #'   \itemize{
@@ -25,7 +26,7 @@
 #' prodcalc(happy, ~ happy, "hbar", offset = 0.005)
 #' prodcalc(happy, ~ happy, "hspine", offset = 0.01)
 #' }
-prodcalc <- function(data, formula, divider = mosaic(), cascade = 0, scale_max = TRUE, na.rm = FALSE, offset = offset, expected = NULL) {
+prodcalc <- function(data, formula, divider = mosaic(), cascade = 0, scale_max = TRUE, na.rm = FALSE, offset = 0.01, expected = NULL) {
 
   vars <- parse_product_formula(stats::as.formula(formula))
 #browser()

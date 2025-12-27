@@ -17,6 +17,7 @@ geom_mosaic(
   offset = 0.01,
   show.legend = NA,
   inherit.aes = FALSE,
+  expected = NULL,
   ...
 )
 
@@ -43,6 +44,7 @@ stat_mosaic(
   show.legend = NA,
   inherit.aes = TRUE,
   offset = 0.01,
+  expected = NULL,
   ...
 )
 }
@@ -117,6 +119,9 @@ but unobserved levels are omitted.}
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[ggplot2:annotation_borders]{annotation_borders()}}.}
+
+\item{expected}{Optional loglinear model specification for residual shading.
+See details in \code{\link{prodcalc}}.}
 
 \item{...}{other arguments passed on to \code{layer}. These are often aesthetics, used to set an aesthetic to a fixed value, like \code{color = 'red'} or \code{size = 3}. They may also be parameters to the paired geom/stat.}
 
@@ -238,5 +243,16 @@ ggplot(data = happy) +
 ggplot(data = happy) +
  geom_mosaic(aes(weight = wtssall, x = product(health), fill = health)) +
  facet_grid(happy~.)
+
+# Residual shading with independence model
+ggplot(data = titanic) +
+  geom_mosaic(aes(x = product(Class, Sex)), expected = "independence") +
+  scale_fill_residual()
+
+# Custom model formula
+ggplot(data = titanic) +
+  geom_mosaic(aes(x = product(Class, Sex, Survived)),
+              expected = ~ Class + Sex) +
+  scale_fill_residual()
 } # end of don't run
 }

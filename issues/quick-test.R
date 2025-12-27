@@ -16,6 +16,9 @@ cat("Test 1: Independence model with titanic data...\n")
 
 data(titanic)
 
+# fit the glm model directly
+#
+
 p1 <- ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Sex)),
               expected = "independence") +
@@ -49,11 +52,22 @@ p3 <- ggplot(data = titanic) +
               expected = ~ Class + Sex) +
   scale_fill_residual() +
   labs(title = "Test 3: Custom Formula",
-       subtitle = "Model: ~ Class + Sex") +
+       subtitle = "Model: ~ Class + Sex; Survived") +
   theme_mosaic()
 
 print(p3)
 cat("✓ Test 3 completed\n\n")
+
+p4 <- ggplot(data = titanic) +
+  geom_mosaic(aes(x = product(Class, Sex)),
+              expected = ~ Class + Sex) +
+  scale_fill_residual() +
+  labs(title = "Test 3: Custom Formula",
+       subtitle = "Model: ~ Class + Sex") +
+  theme_mosaic()
+
+print(p4)
+
 
 # Test 4: Weighted data
 # ----------------------
