@@ -55,11 +55,11 @@ head(titanic)
 First, let's create a basic mosaic plot showing Class by Survival:
 
 ```{r basic-mosaic}
-ggplot(data = titanic) +
+print(ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Survived), fill = Survived)) +
   labs(title = "Titanic: Class by Survival",
        subtitle = "Basic mosaic plot") +
-  theme_mosaic()
+  theme_mosaic())
 ```
 
 This shows the observed patterns, but we can't immediately see which differences are statistically meaningful.
@@ -69,13 +69,13 @@ This shows the observed patterns, but we can't immediately see which differences
 Now let's add an independence model to see deviations from expected frequencies:
 
 ```{r independence-model}
-ggplot(data = titanic) +
+print(ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Survived)),
               expected = "independence") +
   scale_fill_residual() +
   labs(title = "Titanic: Class by Survival",
        subtitle = "Independence model with residual shading") +
-  theme_mosaic()
+  theme_mosaic())
 ```
 
 The blue and red shading immediately reveals the pattern: First class passengers had higher survival rates than expected (blue), while crew and third class had lower rates (red).
@@ -123,13 +123,13 @@ You can specify custom loglinear models using R's formula syntax:
 
 ```{r custom-formula}
 # Model with Class + Sex main effects only (no interaction)
-ggplot(data = titanic) +
+print(ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Sex, Survived)),
               expected = ~ Class + Sex) +
   scale_fill_residual() +
   labs(title = "Custom Model: Class + Sex",
        subtitle = "Testing for Survival associations given Class and Sex") +
-  theme_mosaic()
+  theme_mosaic())
 ```
 
 This model asks: "Are there deviations from what we'd expect if Survival were independent of the Class × Sex combinations?"
@@ -163,13 +163,13 @@ Pearson residuals follow approximately a standard normal distribution:
 Extended mosaic plots are particularly powerful for three-way and higher tables:
 
 ```{r three-way}
-ggplot(data = titanic) +
+print(ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Sex, Survived)),
               expected = "independence") +
   scale_fill_residual() +
   labs(title = "Titanic: Complete Independence Model",
        subtitle = "Class, Sex, and Survival all independent") +
-  theme_mosaic()
+  theme_mosaic())
 ```
 
 The residuals reveal complex patterns:
@@ -184,14 +184,14 @@ To make residuals more interpretable, you can display the actual values in cells
 ### Display Observed Counts
 
 ```{r observed-counts}
-ggplot(data = titanic) +
+print(ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Sex), fill = Survived)) +
   geom_mosaic_text(aes(x = product(Class, Sex)),
                    display_values = "observed",
                    format_digits = 0,
                    size = 3) +
   labs(title = "Observed Frequencies") +
-  theme_mosaic()
+  theme_mosaic())
 ```
 
 ### Display Residuals
@@ -199,7 +199,7 @@ ggplot(data = titanic) +
 When using residual shading, it's helpful to show the actual residual values:
 
 ```{r residual-labels}
-ggplot(data = titanic) +
+print(ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Sex)),
               expected = "independence") +
   scale_fill_residual() +
@@ -211,7 +211,7 @@ ggplot(data = titanic) +
                    size = 3) +
   labs(title = "Residuals from Independence",
        subtitle = "Values show Pearson residuals") +
-  theme_mosaic()
+  theme_mosaic())
 ```
 
 **Important**: When using `display_values = "residual"` or `"expected"`, you must specify the same `expected` parameter in both `geom_mosaic()` and `geom_mosaic_text()`.
@@ -221,7 +221,7 @@ ggplot(data = titanic) +
 You can also show what the model expects:
 
 ```{r expected-values}
-ggplot(data = titanic) +
+print(ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Survived)),
               expected = "independence") +
   scale_fill_residual() +
@@ -232,7 +232,7 @@ ggplot(data = titanic) +
                    colour = "black",
                    size = 3.5) +
   labs(title = "Expected Frequencies Under Independence") +
-  theme_mosaic()
+  theme_mosaic())
 ```
 
 ### The Four Display Options
@@ -249,7 +249,7 @@ The `display_values` parameter in `geom_mosaic_text()` accepts:
 The `scale_fill_residual()` function provides a diverging color scale centered at zero. You can customize it:
 
 ```{r custom-scale}
-ggplot(data = titanic) +
+print(ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Sex)),
               expected = "independence") +
   scale_fill_residual(
@@ -265,13 +265,13 @@ ggplot(data = titanic) +
                    format_digits = 1,
                    size = 3) +
   labs(title = "Custom Color Scale") +
-  theme_mosaic()
+  theme_mosaic())
 ```
 
 You can also use any ggplot2 diverging scale:
 
 ```{r ggplot2-scale}
-ggplot(data = titanic) +
+print(ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Survived)),
               expected = "independence") +
   scale_fill_gradient2(
@@ -282,7 +282,7 @@ ggplot(data = titanic) +
     name = "Residual"
   ) +
   labs(title = "Custom ggplot2 Scale") +
-  theme_mosaic()
+  theme_mosaic())
 ```
 
 ## Text Aesthetics
@@ -290,7 +290,7 @@ ggplot(data = titanic) +
 All standard ggplot2 text aesthetics work with `geom_mosaic_text()`:
 
 ```{r text-aesthetics}
-ggplot(data = titanic) +
+print(ggplot(data = titanic) +
   geom_mosaic(aes(x = product(Class, Survived)),
               expected = "independence") +
   scale_fill_residual() +
@@ -303,7 +303,7 @@ ggplot(data = titanic) +
                    fontface = "bold",  # Font weight
                    family = "serif") + # Font family
   labs(title = "Custom Text Aesthetics") +
-  theme_mosaic()
+  theme_mosaic())
 ```
 
 Available text parameters:
