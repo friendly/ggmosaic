@@ -30,7 +30,7 @@ URL: https://haleyjeppson.github.io/ggmosaic/, https://github.com/haleyjeppson/g
 BugReports: https://github.com/haleyjeppson/ggmosaic
 Depends:
     ggplot2 (>= 3.5.0),
-    R (>= 3.5.0)
+    R (>= 4.1.0)
 Imports:
     productplots,
     dplyr,

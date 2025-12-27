@@ -46,6 +46,7 @@ shortcut_to_formula <- function(shortcut, vars, conds = NULL) {
 #' @param vars Character vector of margin variable names (with prefixes like x__Class)
 #' @param conds Character vector of conditioning variable names (optional, with prefixes)
 #' @return Formula object or NULL
+#' @importFrom stats  as.formula glm poisson predict reformulate setNames terms
 #' @keywords internal
 build_model_formula <- function(expected, vars, conds = NULL) {
   # If expected is NULL, no model
