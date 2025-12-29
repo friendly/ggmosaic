@@ -319,13 +319,13 @@ Potential additions (not currently implemented):
 
 This implementation successfully adds loglinear model residual shading to ggmosaic, providing:
 
-✅ Three model shortcuts (independence, saturated, conditional)
-✅ Custom formula support
-✅ Pearson residual calculation
-✅ Diverging color scale
-✅ Automatic fill mapping with user override
-✅ Full backward compatibility
-✅ No new dependencies
-✅ Comprehensive documentation and examples
+* ✅ Three model shortcuts (independence, saturated, conditional)
+* ✅ Custom formula support
+* ✅ Pearson residual calculation
+* ✅ Diverging color scale
+* ✅ Automatic fill mapping with user override
+* ✅ Full backward compatibility
+* ✅ No new dependencies
+* ✅ Comprehensive documentation and examples
 
 The feature is ready for testing and can be considered for inclusion in the next ggmosaic release.
