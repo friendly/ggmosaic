@@ -1,3 +1,7 @@
+# ggmosaic 0.4.1
+
+Extensive changes to intoduce fitting loglinear models and residual-based shading, described in https://github.com/haleyjeppson/ggmosaic/pull/86
+
 # ggmosaic 0.3.4
 
 - updated for compatible with ggplot2 3.5.0 
