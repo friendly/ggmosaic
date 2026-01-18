@@ -47,7 +47,8 @@ Suggests:
     NHANES,
     rmarkdown,
     shiny (>= 1.1.0),
-    patchwork
+    patchwork,
+    vcdExtra
 VignetteBuilder: 
     knitr
 Encoding: UTF-8

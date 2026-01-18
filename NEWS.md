@@ -5,6 +5,7 @@ Extensive changes to intoduce fitting loglinear models and residual-based shadin
 * added labeling for cells (obs/exp/res)
 * added loglinear-models vignette to explain this
 * added vignette on forms of frequency data
+* fix error from ggmosaic vignette related to `tapply()` in `R/divide.R`
 
 # ggmosaic 0.3.4
 
