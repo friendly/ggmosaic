@@ -15,3 +15,5 @@
 ^CRAN-RELEASE$
 ^issues$
 ^.claude$
+^\.positai$
+^\.claude$
